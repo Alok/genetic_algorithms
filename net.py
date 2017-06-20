@@ -170,7 +170,7 @@ def evolve():
 
         iter += 1
 
-        print(f'LOSS = {LOSS}, iter = {iter}')
+        print('LOSS = %f, iter = %d' % (LOSS, iter))
 
     return population
 
