@@ -30,7 +30,7 @@ x_train, x_test = normalize_input(x_train), normalize_input(x_test)
 
 ACTIVATION = 'relu'
 CALLBACKS = [EarlyStopping()]
-MAX_HIDDEN_DEPTH = 10
+MAX_HIDDEN_DEPTH = 5
 MAX_HIDDEN_WIDTH = 1000
 MUTATION_RATE = 0.15
 NUM_EPOCHS = 2
