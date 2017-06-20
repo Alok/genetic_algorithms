@@ -8,14 +8,16 @@ import keras
 import numpy as np
 from keras.activations import relu, sigmoid, softmax, tanh
 from keras.callbacks import EarlyStopping
-from keras.datasets import mnist
+from keras.datasets import cifar10
 from keras.layers import Activation, Dense, Dropout
 from keras.losses import categorical_crossentropy
 from keras.models import Sequential
 from keras.optimizers import SGD, Adam, Adamax
 from keras.utils.np_utils import to_categorical as one_hot
 
-(x_train, y_train), (x_test, y_test) = mnist.load_data()
+DATASET = cifar10
+
+(x_train, y_train), (x_test, y_test) = DATASET.load_data()
 
 y_train, y_test = one_hot(y_train), one_hot(y_test)
 
@@ -180,5 +182,4 @@ def evolve():
 
 
 if __name__ == '__main__':
-    pass
     evolve()
