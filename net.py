@@ -76,7 +76,7 @@ def individual(
         metrics=['accuracy'], )
 
     if VERBOSE:
-        print(model.summary())
+        model.summary()
 
     model.fit(
         x=x_train,
@@ -156,7 +156,7 @@ def create_new_generation(population):
     assert len(population) <= POPULATION_SIZE
 
     while len(population) < POPULATION_SIZE:
-        child = breed(random.sample(parents, k=NUM_PARENTS))
+        child = breed(random.sample(parents, k=max(1,NUM_PARENTS)))
         population += child
     return population
 
