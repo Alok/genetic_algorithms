@@ -102,7 +102,7 @@ def breed(parents, mutation_rate=MUTATION_RATE):
     child_depth = len(random.choice(parents).get_config()) - 2
 
     # TODO mutation strategies here
-    if random.random() < MUTATION_RATE:
+    if random.random() < mutation_rate:
         child_depth = max(
             1,
             floor(truncnorm.rvs(-MAX_HIDDEN_DEPTH / 2, MAX_HIDDEN_DEPTH / 2)))
@@ -157,12 +157,7 @@ def create_new_generation(population):
     assert len(population) <= POPULATION_SIZE
 
     while len(population) < POPULATION_SIZE:
-        try:
-            child = breed(
-                random.sample(parents, k=min(len(parents), NUM_PARENTS)))
-        except ValueError:
-            print('num parents = %d' % (NUM_PARENTS))
-            print('POPULATION_SIZE = %d' % (len(population)))
+        child = breed(random.sample(parents, k=min(len(parents), NUM_PARENTS)))
         population += child
     return population
 
