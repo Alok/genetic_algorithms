@@ -8,14 +8,14 @@ import keras
 import numpy as np
 from keras.activations import relu, sigmoid, softmax, tanh
 from keras.callbacks import EarlyStopping
-from keras.datasets import cifar10
+from keras.datasets import cifar10,mnist
 from keras.layers import Activation, Dense, Dropout
 from keras.losses import categorical_crossentropy
 from keras.models import Sequential
 from keras.optimizers import SGD, Adam, Adamax
 from keras.utils.np_utils import to_categorical as one_hot
 
-DATASET = cifar10
+DATASET = mnist
 
 (x_train, y_train), (x_test, y_test) = DATASET.load_data()
 
@@ -99,7 +99,7 @@ def breed(parents, mutation_rate=MUTATION_RATE):
 
     # TODO define
 
-    child_width = (random.choice(parents).get_config())[0]['units']
+    child_width = (random.choice(parents).get_config())[0]['config']['units']
     # len() is number of layers, and we subtract 2, one each for input and output
     child_depth = len(random.choice(parents).get_config()) - 2
 
