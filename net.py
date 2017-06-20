@@ -75,6 +75,9 @@ def individual(
         loss=categorical_crossentropy,
         metrics=['accuracy'], )
 
+    if VERBOSE:
+        print(model.summary())
+
     model.fit(
         x=x_train,
         y=y_train,
