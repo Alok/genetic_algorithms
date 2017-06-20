@@ -156,7 +156,7 @@ def create_new_generation(population):
     assert len(population) <= POPULATION_SIZE
 
     while len(population) < POPULATION_SIZE:
-        child = breed(random.sample(parents), k=NUM_PARENTS)
+        child = breed(random.sample(parents, k=NUM_PARENTS))
         population += child
     return population
 
