@@ -19,6 +19,7 @@ from keras.utils.np_utils import to_categorical as one_hot
 
 y_train, y_test = one_hot(y_train), one_hot(y_test)
 
+
 def normalize_input(x):
     return x.reshape(x.shape[0], x.shape[1] * x.shape[2]
                      ).astype('float32') / 255
@@ -35,7 +36,7 @@ MAX_HIDDEN_WIDTH = 1000
 MUTATION_RATE = 0.15
 NUM_EPOCHS = 2
 OPTIMIZER = Adam()
-POPULATION_SIZE = 2
+POPULATION_SIZE = 10
 NUM_PARENTS = min(5, POPULATION_SIZE)
 REPRIEVE_RATE = 0.1
 SURVIVAL_RATE = 0.3
@@ -157,10 +158,11 @@ def create_new_generation(population):
 
     while len(population) < POPULATION_SIZE:
         try:
-            child = breed(random.sample(parents, k=max(1,NUM_PARENTS)))
+            child = breed(
+                random.sample(parents, k=min(len(parents), NUM_PARENTS)))
         except ValueError:
-            print('num parents = %d' %(NUM_PARENTS))
-            print('POPULATION_SIZE = %d' %(len(population)))
+            print('num parents = %d' % (NUM_PARENTS))
+            print('POPULATION_SIZE = %d' % (len(population)))
         population += child
     return population
 
